@@ -62,6 +62,16 @@
             return $respuesta;
         }
 
+        public function insert($nombre, $apellido, $edad, $correo, $fecha){
+            $consulta= "INSERT INTO alumnos (nombre, apellido, edad, correo_electronico, fecha_nacimineto)
+            VALUES ('$nombre', '$apellido', $edad, '$correo', '$fecha')";
+            $coneccion=$this->Connection->getConnection();
+            $resultado=$coneccion->query($consulta);
+            $respeuesta=$resultado?true:false;
+            $this->Connection->closeConnection();
+            return $respeuesta;
+        }
+
     }
 
 

@@ -18,6 +18,21 @@
             include_once("app/view/admin/plantillaAdminView.php");
         }
 
+        public function callInsertForm(){
+            $vista="app/view/admin/alumnos/insertForm.php";
+            include_once("app/view/admin/plantillaAdminView.php");
+        }
+
+        public function insert(){
+            if($_SERVER['REQUEST_METHOD']== 'POST'){
+                //generamos las variables 
+                $nombre=$_POST['nombre'];
+
+            }
+        }
+
+
+
         public function delete($id){
 
         }

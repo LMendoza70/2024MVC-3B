@@ -17,7 +17,7 @@
             </ul>
         </nav>
     </header>
-    <section class="container">
+    <section class="container" style="background-color: lightblue;">
         <?php include_once($vista); ?>
     </section>
     <footer class="footer">

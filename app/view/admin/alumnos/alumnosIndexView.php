@@ -8,6 +8,7 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae rem voluptatem ipsam architecto quos tempora animi dicta corporis minima rerum explicabo laboriosam, adipisci labore, omnis repellat fuga accusamus facere reiciendis.
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo aspernatur commodi vero quasi quidem. Alias provident, eius ipsum officiis, quo nostrum atque dolorem velit aliquam maiores aut earum laborum nobis.
     </p>
+    <h3><a href="http://localhost/php-3b/?C=alumnoController&M=callInsertForm">Insertar nuevo alumno</a></h3>
     <table border="1">
         <thead>
             <tr>

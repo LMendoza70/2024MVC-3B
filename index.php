@@ -21,7 +21,12 @@ if(is_file($ruta)){
 
     if(method_exists($objeto,$metodo)){
         $objeto -> $metodo(); 
+    }else{
+        require_once("app/controller/defaultController.php");
+        $default=new defaultController();
+        $default->index();    
     }
+
 }else{
     require_once("app/controller/defaultController.php");
     $default=new defaultController();
