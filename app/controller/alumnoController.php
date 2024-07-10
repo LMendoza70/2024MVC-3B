@@ -25,9 +25,26 @@
 
         public function insert(){
             if($_SERVER['REQUEST_METHOD']== 'POST'){
-                //generamos las variables 
-                $nombre=$_POST['nombre'];
+                
+                $alumno= array(
+                    'nombre'=>$_POST['nombre'],
+                    'apellido'=>$_POST['apellido'],
+                    'edad'=>$_POST['edad'],
+                    'correo'=>$_POST['correo'],
+                    'fecha'=>$_POST['fecha']
+                );
 
+                if(!isset($alumno['nombre'],$alumno['apellido'],$alumno['edad'],$alumno['correo'],$alumno['fecha'])){
+                    header("location:http://localhost/php-3b");   
+                }
+
+                $this->alumno= new alumnoModel();
+                $resultado= $this->alumno->insert($alumno);
+                if($resultado){
+                    header("location:http://localhost/php-3b/?C=alumnoController&M=index");
+                }else{
+                    header("location:http://localhost/php-3b");
+                }
             }
         }
 

@@ -62,8 +62,18 @@
             return $respuesta;
         }
 
-        public function insert($nombre, $apellido, $edad, $correo, $fecha){
-            $consulta= "INSERT INTO alumnos (nombre, apellido, edad, correo_electronico, fecha_nacimineto)
+        public function insert($alumno){
+            if(!isset($alumno['nombre'],$alumno['apellido'],$alumno['edad'],$alumno['correo'],$alumno['fecha'])){
+                return false;   
+            }
+
+            $nombre=$alumno['nombre'];
+            $edad=$alumno['edad'];
+            $apellido=$alumno['apellido'];
+            $correo=$alumno['correo'];
+            $fecha=$alumno['fecha'];
+
+            $consulta= "INSERT INTO alumnos (nombre, apellido, edad, correo_electronico, fecha_nacimiento)
             VALUES ('$nombre', '$apellido', $edad, '$correo', '$fecha')";
             $coneccion=$this->Connection->getConnection();
             $resultado=$coneccion->query($consulta);
