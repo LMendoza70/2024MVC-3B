@@ -82,6 +82,26 @@
             return $respeuesta;
         }
 
+        public function eddit($data){
+            if(!isset($data['id'], $data['nombre'], $data['apellido'], $data['edad'], $data['correo'], $data['fecha'])){
+                return false;
+            }
+            $id=$data['id'];
+            $nombre=$data['nombre'];
+            $apellido=$data['apellido'];
+            $edad=$data['edad'];
+            $correo=$data['correo'];
+            $fecha=$data['fecha'];
+
+            $consulta="UPDATE alumnos SET nombre='$nombre', apellido='$apellido', edad=$edad,
+            correo_electronico='$correo', fecha_nacimiento='$fecha' WHERE id_alumno=$id";
+            $coneccion=$this->Connection->getConnection();
+            $resultado=$coneccion->query($consulta);
+            $respuesta=$resultado?true:false;
+            $this->Connection->closeConnection();
+            return $respuesta;
+        }
+
     }
 
 

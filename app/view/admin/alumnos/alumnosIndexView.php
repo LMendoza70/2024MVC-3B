@@ -36,7 +36,7 @@
     </table>
                 <script>
                     function editar(id){
-                        window.location.href="http://localhost/php-3b/?C=alumnoController&M=eddit&id="+id
+                        window.location.href="http://localhost/php-3b/?C=alumnoController&M=callEdditForm&id="+id
                     }
 
                     function eliminar(id){
