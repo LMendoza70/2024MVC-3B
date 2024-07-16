@@ -12,8 +12,6 @@
         <nav class="navbar">
             <ul>
                 <li><a href="http://localhost/php-3b/">Inicio</a></li>
-                <li><a href="http://localhost/php-3b?C=alumnoController&M=index">Alumnos</a></li>
-                <li><a href="http://localhost/php-3b?C=cursoController&M=index">Cursos</a></li>
                 <li><a href="http://localhost/php-3b?C=usuarioController&M=callLoginForm">Login</a></li>
             </ul>
         </nav>
