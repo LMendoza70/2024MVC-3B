@@ -13,14 +13,25 @@
             $datos= $this->alumno->getAll();
             //en una variable llmada $vista definimos la ruta de la parte central de la plnatilla en la que 
             //se mostrara la informacion solicitada 
-            $vista="app/view/admin/alumnos/alumnosIndexView.php";
-            //incluimos la plantilla de administrador 
-            include_once("app/view/admin/plantillaAdminView.php");
+            session_start();
+            if(isset($_SESSION['logedin']) && $_SESSION['logedin']==true){
+                $vista="app/view/admin/alumnos/alumnosIndexView.php";
+                //incluimos la plantilla de administrador 
+                include_once("app/view/admin/plantillaAdminView.php");
+            }else{
+                header("location:http://localhost/php-3b");
+            }
+            
         }
 
         public function callInsertForm(){
-            $vista="app/view/admin/alumnos/insertForm.php";
-            include_once("app/view/admin/plantillaAdminView.php");
+            session_start();
+            if(isset($_SESSION['logedin']) && $_SESSION['logedin']==true){
+                $vista="app/view/admin/alumnos/insertForm.php";
+                include_once("app/view/admin/plantillaAdminView.php");
+            }else{
+                header("location:http://localhost/php-3b");
+            }
         }
 
         public function insert(){
@@ -59,23 +70,30 @@
         }
 
         public function eddit(){
-            if($_SERVER['REQUEST_METHOD']=='POST'){
-                $data=array(
-                    'id'=>$_POST['id'],
-                    'nombre'=>$_POST['nombre'],
-                    'apellido'=>$_POST['apellido'],
-                    'edad'=>$_POST['edad'],
-                    'correo'=>$_POST['correo'],
-                    'fecha'=>$_POST['fecha'],
-                );
-                $this->alumno=new alumnoModel();
-                $respuesta= $this->alumno->eddit($data);
-                if($respuesta){
-                    header("location:http://localhost/php-3b/?C=alumnoController&M=index");
-                }else{
-                    header("location:http://localhost/php-3b");
+            session_start();
+            if(isset($_SESSION['logedin']) && $_SESSION['logedin']==true){
+                if($_SERVER['REQUEST_METHOD']=='POST'){
+                    $data=array(
+                        'id'=>$_POST['id'],
+                        'nombre'=>$_POST['nombre'],
+                        'apellido'=>$_POST['apellido'],
+                        'edad'=>$_POST['edad'],
+                        'correo'=>$_POST['correo'],
+                        'fecha'=>$_POST['fecha'],
+                    );
+                    $this->alumno=new alumnoModel();
+                    $respuesta= $this->alumno->eddit($data);
+                    if($respuesta){
+                        header("location:http://localhost/php-3b/?C=alumnoController&M=index");
+                    }else{
+                        header("location:http://localhost/php-3b");
+                    }
                 }
+            }else{
+                header("location:http://localhost/php-3b");
             }
+            
+            
         }
 
         public function delete(){

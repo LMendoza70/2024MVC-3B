@@ -4,8 +4,15 @@ class usuarioController{
     private $usuario;
 
     public function callloginForm(){
+        session_start();
         $vista="app/view/admin/loginFormView.php";
-        include_once("app/view/admin/plantillaAdminView.php");
+        if(isset($_SESSION['logedin']) && $_SESSION['logedin']==true){
+            
+            include_once("app/view/admin/plantillaAdminView.php");
+        }else{
+            include_once("app/view/admin/plantilla2AdminView.php");
+        }
+        
     }
 
     public function login(){
@@ -26,6 +33,12 @@ class usuarioController{
                 include_once("app/view/admin/plantilla2AdminView.php");
             }
         }
+    }
+
+    public function logedout(){
+        session_start();
+        $_SESSION['logedin']=false;
+        header("location:http://localhost/php-3b");
     }
 }
 ?>
